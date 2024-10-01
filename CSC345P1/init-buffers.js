@@ -18,14 +18,15 @@ function initBuffers(gl) {
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
   
     //now create an array of positions for the square.
-    const positions = [1.0, 1.0, -1.0, 1.0, 1.0, -1.0, -1.0, -1.0];
+    const sky = [3.5, 3.0, -3.5, 3.0, 3.5, -3.0, -3.5, -3.0];
+    
   
     //now pass the list of positions into WebGL to build the shape by creating a Float32Array from the JavaScript array, then use it to fill the current buffer
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(sky), gl.STATIC_DRAW);
   
     return positionBuffer;
   }
-    //create buffer for colors
+    //create buffer for sky color
   function initColorBuffer(gl) {
     const colors = [
       1.0,
