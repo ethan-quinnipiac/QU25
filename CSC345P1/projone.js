@@ -1,3 +1,6 @@
+import { initBuffers } from "./init-buffers.js";
+import { drawScene } from "./draw-scene.js";
+
 main();
 
 function main() {
@@ -53,6 +56,12 @@ function main() {
       modelViewMatrix: gl.getUniformLocation(shaderProgram, "uModelViewMatrix"),
     },
   };
+
+  //this is where the routine that builds all the objects we'll be drawing is called
+  const buffers = initBuffers(gl);
+
+  //DRAW THE SCENE :D
+  drawScene(gl, programInfo, buffers);
 
 }
 //
