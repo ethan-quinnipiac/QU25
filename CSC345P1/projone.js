@@ -22,24 +22,35 @@ function main() {
   //clear the color buffer with specified clear color
   gl.clear(gl.COLOR_BUFFER_BIT);
 
-  // Vertex shader program
+  //vertex shader program
   //avertexposition recieves vertex values and is multiplied by the two matrices to set gl_position to the final value
+
   const vsSource = `
-    attribute vec4 aVertexPosition; 
-    uniform mat4 uModelViewMatrix;  
+    attribute vec4 aVertexPosition;
+    attribute vec4 aVertexColor;
+
+    uniform mat4 uModelViewMatrix;
     uniform mat4 uProjectionMatrix;
-    void main() {
+
+    varying lowp vec4 vColor;
+
+    void main(void) {
       gl_Position = uProjectionMatrix * uModelViewMatrix * aVertexPosition;
+      vColor = aVertexColor;
     }
   `;
 
+
   //fragment shader program to determine color of pixel and then set it
-  //in this case it is white
+
   const fsSource = `
-    void main() {
-      gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    varying lowp vec4 vColor;
+
+    void main(void) {
+      gl_FragColor = vColor;
     }
   `;
+
 
   //initialize a shader program where the lighting for the vertices and so forth is established
   const shaderProgram = initShaderProgram(gl, vsSource, fsSource);
@@ -50,12 +61,14 @@ function main() {
     program: shaderProgram,
     attribLocations: {
       vertexPosition: gl.getAttribLocation(shaderProgram, "aVertexPosition"),
+      vertexColor: gl.getAttribLocation(shaderProgram, "aVertexColor"),
     },
     uniformLocations: {
       projectionMatrix: gl.getUniformLocation(shaderProgram, "uProjectionMatrix"),
       modelViewMatrix: gl.getUniformLocation(shaderProgram, "uModelViewMatrix"),
     },
   };
+
 
   //this is where the routine that builds all the objects we'll be drawing is called
   const buffers = initBuffers(gl);
