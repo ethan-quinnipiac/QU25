@@ -6,8 +6,8 @@ function initBuffers(gl) {
     const groundColorBuffer = initGroundColorBuffer(gl);
 
     return {
-        position: skyPosBuffer,
-        color: skyColorBuffer,
+        position: skyPosBuffer, groundPosBuffer,
+        color: skyColorBuffer, groundColorBuffer,
     };
 
   }
