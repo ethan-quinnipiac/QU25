@@ -81,8 +81,6 @@ function drawScene(gl, programInfo, buffersArray) {
     });
 }
 
-export { drawScene };
-
 function initSkyPositionBuffer(gl) {
   const positionBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
