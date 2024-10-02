@@ -19,6 +19,16 @@ function initBuffers(gl) {
   const p1LegPosBuffer = initP1LegPositionBuffer(gl);
   const p1ArmPosBuffer = initP1ArmPositionBuffer(gl);
 
+  const p2HeadPosBuffer = initP2HeadPositionBuffer(gl);
+  const p2BodyPosBuffer = initP2BodyPositionBuffer(gl);
+  const p2LegPosBuffer = initP2LegPositionBuffer(gl);
+  const p2ArmPosBuffer = initP2ArmPositionBuffer(gl);
+
+  const blanketPosBuffer = initBlanketPositionBuffer(gl);
+
+  const p3HeadPosBuffer = initP3HeadPositionBuffer(gl);
+    const p3BodyPosBuffer = initP3BodyPositionBuffer(gl);
+
 ///////////////////////COLORS////////////////////////
   const blueColorBuffer = initBlueColorBuffer(gl);
   const greenColorBuffer = initGreenColorBuffer(gl);
@@ -30,6 +40,7 @@ function initBuffers(gl) {
   const purpleColorBuffer = initPurpleColorBuffer(gl);
   const blackColorBuffer = initBlackColorBuffer(gl);
   const tanColorBuffer = initTanColorBuffer(gl);
+  const darkLavenderColorBuffer = initDarkLavenderColorBuffer(gl);
 
   return [
     {//sky
@@ -51,6 +62,18 @@ function initBuffers(gl) {
     {//ground
       position: groundPosBuffer,
       color: greenColorBuffer,
+    },
+    {//blanket
+        position: blanketPosBuffer,
+        color: darkLavenderColorBuffer,
+    },
+    {//p3 head
+        position: p3HeadPosBuffer,
+        color: tanColorBuffer,
+    },
+    {//p3 body
+        position: p3BodyPosBuffer,
+        color: tanColorBuffer,
     },
     {//left tree
         position: leftTreePosBuffer,
@@ -92,6 +115,23 @@ function initBuffers(gl) {
         position: p1ArmPosBuffer,
         color: tanColorBuffer,
     },
+    {//p2 head
+        position: p2HeadPosBuffer,
+        color: tanColorBuffer,
+    },
+    {//p2 body
+        position: p2BodyPosBuffer,
+        color: tanColorBuffer,
+    },
+    {//p2 leg
+        position: p2LegPosBuffer,
+        color: tanColorBuffer,
+    },
+    {//p2 arm
+        position: p2ArmPosBuffer,
+        color: tanColorBuffer,
+    },
+    
   ];
 }
 
@@ -215,6 +255,96 @@ function initP1ArmPositionBuffer(gl) {
     return positionBuffer;
 }
 
+function initP2HeadPositionBuffer(gl) {
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    const positions = [-1.65, -0.5, -1.35, -0.5, -1.65, -0.8, -1.35, -0.8]; 
+
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    return positionBuffer;
+}
+
+function initP2BodyPositionBuffer(gl) {
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    const positions = [-1.55, -0.5, -1.45, -0.5, -1.55, -1.3, -1.45, -1.3]; 
+
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    return positionBuffer;
+}
+
+function initP2LegPositionBuffer(gl) {
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    const positions = [-1.55, -1.3, -1.45, -1.3, -1.25, -1.6, -1.15, -1.6]; 
+
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    return positionBuffer;
+}
+
+function initP2ArmPositionBuffer(gl) {
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    const positions = [-1.55, -0.9, -1.45, -0.9, -1.35, -1.4, -1.25, -1.4]; 
+
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    return positionBuffer;
+}
+
+function initBlanketPositionBuffer(gl) {
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    const positions = [0, -1.5, 0.8, -1.5, 1.5, -0.25, 2.3, -0.25]; 
+
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    return positionBuffer;
+}
+
+function initP3HeadPositionBuffer(gl) {
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    const positions = [1.45, -.5, 1.75, -.5, 1.45, -.8, 1.75, -.8]; 
+
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    return positionBuffer;
+}
+
+function initP3BodyPositionBuffer(gl) {
+    const positionBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+    const positions = [1.55, -.5, 1.65, -.5, .7, -1.5, .8, -1.5]; 
+
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+    return positionBuffer;
+}
+
+//Would have implemented with more time
+// function initP3LegPositionBuffer(gl) {
+//     const positionBuffer = gl.createBuffer();
+//     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+//     const positions = [-2.3, -1.8, -2.2, -1.8, -2.0, -2.1, -1.9, -2.1]; 
+
+//     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+//     return positionBuffer;
+// }
+
+// function initP3ArmPositionBuffer(gl) {
+//     const positionBuffer = gl.createBuffer();
+//     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+//     const positions = [-2.3, -1.4, -2.2, -1.4, -2.1, -1.9, -2, -1.9]; 
+
+//     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+//     return positionBuffer;
+// }
 // function initCirclePositionBuffer(gl, centerX, centerY, radius) {
 //     const positionBuffer = gl.createBuffer();
 //     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
@@ -390,6 +520,21 @@ function initTanColorBuffer(gl) {
       0.82, 0.71, 0.55, 1.0,
       0.82, 0.71, 0.55, 1.0,
       0.82, 0.71, 0.55, 1.0,
+    ];
+  
+    const colorBuffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+  
+    return colorBuffer;
+}
+
+function initDarkLavenderColorBuffer(gl) {
+    const colors = [
+      0.4, 0.2, 0.6, 1.0, // dark lavender
+      0.4, 0.2, 0.6, 1.0,
+      0.4, 0.2, 0.6, 1.0,
+      0.4, 0.2, 0.6, 1.0,
     ];
   
     const colorBuffer = gl.createBuffer();
