@@ -75,7 +75,6 @@ function main() {
 
   //DRAW THE SCENE :D
   drawScene(gl, programInfo, buffers);
-
 }
 //
 //
